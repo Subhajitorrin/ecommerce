@@ -256,3 +256,50 @@ a{
   overflow-x: auto;
   gap: 2rem;
 }
+.cardcontainer .right{
+  width: 40%;
+  height: 100%;
+}
+.cartcontainer{
+  display: flex;
+  flex-direction: row;
+}
+.cartcontainer .right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cost{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 20rem;
+  font-size: 1.5rem;
+}
+.innercost{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.purchase{
+  width: 100%;
+  height: 35px;
+  background-color:#28283c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .cartcontainer{
+    width: 100%;
+    flex-direction: column;
+  }
+  .cartcontainer .left{
+    width: 100%;
+  }
+  .cartcontainer .right{
+    width: 100%;
+  }
+}

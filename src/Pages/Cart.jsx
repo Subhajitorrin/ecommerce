@@ -16,7 +16,24 @@ function Cart(props) {
           );
         })}
       </div>
-      <div className="right"></div>
+      <div className="right">
+        <div className="cost">
+          <div className="promo">
+            <input type="text" name="" id="" />
+            <button>Submit</button>
+          </div>
+          <div className="innercost">
+            <h4>Shopping Cost:</h4> <h4>$100</h4>
+          </div>
+          <div className="innercost">
+            <h4>Discount:</h4> <h4>-$0</h4>
+          </div>
+          <div className="innercost">
+            <h3>Total Cost:</h3> <h3>$100</h3>
+          </div>
+          <button className="purchase">Proceed to purchase</button>
+        </div>
+      </div>
     </div>
   );
 }

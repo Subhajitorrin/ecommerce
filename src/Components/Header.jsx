@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="headerContainer">
       <div className="left">
-        <h2>ORRINMART</h2>
+        <Link to="/"><h2>ORRINMART</h2></Link>
         <nav className="nav">
           <ul>
             <Link to="/">Home</Link>
