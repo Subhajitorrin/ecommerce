@@ -6,12 +6,22 @@ function Card(props) {
   const [starlist, setStarlist] = useState([]);
   useEffect(() => {
     setRating(Math.floor(props.rating));
-    let temp=[]
+    let temp = [];
     for (let i = 0; i < rating; i++) {
-      temp.push(<IoIosStar key={i}/>)
+      temp.push(<IoIosStar key={i} />);
     }
-    setStarlist(temp)
+    setStarlist(temp);
   }, []);
+
+  function addToCart() {
+    const updatedCart = [...props.cart, {
+      title: props.title,
+      price:props.price,
+      image:props.image
+    }];
+    props.setCart(updatedCart);
+    console.log(props.cart);
+  }
 
   return (
     <div className="cardcontainer">
@@ -28,16 +38,14 @@ function Card(props) {
         <h5>Rating {props.rating}</h5>
         <div className="starcontainer">
           {/* <IoIosStar /> */}
-          {
-            starlist
-          }
+          {starlist}
         </div>
       </div>
       <div className="price">
         <h5>${props.price}</h5>
       </div>
       <div className="cartbtn">
-        <button>
+        <button onClick={addToCart}>
           <h4>Add to cart</h4>
         </button>
       </div>

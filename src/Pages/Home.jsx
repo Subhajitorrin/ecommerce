@@ -3,8 +3,9 @@ import TopSection from "../Components/TopSection";
 import { useState, useEffect } from "react";
 import Card from "../Components/Card";
 
-function Home() {
+function Home(props) {
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
@@ -16,13 +17,17 @@ function Home() {
       <TopSection />
       <div className="homeContainer">
         {products.map((item, index) => {
-          return <Card
-            title={item.title.slice(0, 70)}
-            description={item.description.slice(0, 100)}
-            image={item.image}
-            price={item.price}
-            rating={item.rating.rate}
-          />;
+          return (
+            <Card key={index}
+              title={item.title.slice(0, 70)}
+              description={item.description.slice(0, 100)}
+              image={item.image}
+              price={item.price}
+              rating={item.rating.rate}
+              cart={props.cart}
+              setCart={props.setCart}
+            />
+          );
         })}
       </div>
     </>
