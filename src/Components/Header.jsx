@@ -3,8 +3,21 @@ import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
+import { useEffect,useState } from "react";
 
 function Header(props) {
+  const [totalQuantity,setTotalQuantity]=useState(0)
+  function totalItemsInCart(){
+    let tempTotalQuantity=0
+    for(let i=0;i<props.cart.length;i++){
+      tempTotalQuantity+=props.cart[i].quantity;
+    }
+    setTotalQuantity(tempTotalQuantity);
+  }
+  useEffect(() => {
+    totalItemsInCart()
+  }, [props.cart])
+  
   return (
     <div className="headerContainer">
       <div className="left">
@@ -28,7 +41,7 @@ function Header(props) {
           <div className="carticoncontainer">
             <img src="./cart.png" alt="" />
             <div className="pcontainer">
-              <p>{props.cart.length}</p>
+              <p>{totalQuantity}</p>
             </div>
           </div>
         </Link>

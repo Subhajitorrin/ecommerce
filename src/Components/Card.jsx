@@ -14,13 +14,30 @@ function Card(props) {
   }, []);
 
   function addToCart() {
-    const updatedCart = [...props.cart, {
-      title: props.title,
-      price:props.price,
-      image:props.image
-    }];
-    props.setCart(updatedCart);
-    console.log(props.cart);
+    // checking if present already
+    const isAlreadyInCart = props.cart.some(
+      (item) => item.title === props.title
+    );
+    if (isAlreadyInCart) {
+      // If item is already in cart, update its quantity
+      const updatedCart = props.cart.map((item) =>
+        item.title === props.title
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      props.setCart(updatedCart);
+    } else {
+      const updatedCart = [
+        ...props.cart,
+        {
+          title: props.title,
+          price: props.price,
+          image: props.image,
+          quantity: 1,
+        },
+      ];
+      props.setCart(updatedCart);
+    }
   }
 
   return (

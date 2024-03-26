@@ -6,14 +6,13 @@ function Cart(props) {
   function calculateTotalPrice(){
     let tempPrice=0
     for(let i=0;i<props.cart.length;i++){
-      tempPrice+=props.cart[i].price;
+      tempPrice+=props.cart[i].price*props.cart[i].quantity;
     }
     setTotalPrice(tempPrice)
   }
   useEffect(() => {
     calculateTotalPrice()
   }, [props.cart])
-  
   return (
     <div className="cartcontainer">
       <div className="left">
@@ -24,6 +23,9 @@ function Cart(props) {
               image={item.image}
               title={item.title}
               price={item.price}
+              quantity={item.quantity}
+              cart={props.cart}
+              setCart={props.setCart}
             />
           );
         })}
