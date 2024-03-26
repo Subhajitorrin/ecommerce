@@ -41,7 +41,7 @@ function Cartcard(props) {
       <div className="cardright">
         <div className="quantity">
           <button onClick={increaseQuantity}>+</button>
-          <h4>{props.quantity}</h4>
+          <h4 className="quantityDisplay">{props.quantity}</h4>
           <button onClick={decreaseQuantity}>-</button>
         </div>
         <h4 className="price">${props.price}</h4>

@@ -4,6 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { useEffect,useState } from "react";
+import CartNotify from "./CartNotify";
 
 function Header(props) {
   const [totalQuantity,setTotalQuantity]=useState(0)
@@ -43,6 +44,7 @@ function Header(props) {
             <div className="pcontainer">
               <p>{totalQuantity}</p>
             </div>
+            <CartNotify className="hoverNotify"/>
           </div>
         </Link>
       </div>

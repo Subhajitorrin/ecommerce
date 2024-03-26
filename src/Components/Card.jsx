@@ -1,3 +1,4 @@
+import { hover } from "@testing-library/user-event/dist/hover";
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 
@@ -38,6 +39,13 @@ function Card(props) {
       ];
       props.setCart(updatedCart);
     }
+
+    // hover effect
+    const cartNotifyContainer = document.querySelector(".cartNotifyContainer");
+    cartNotifyContainer.style.opacity = 100;
+    setTimeout(() => {
+      cartNotifyContainer.style.opacity = 0;
+    }, 2000);
   }
 
   return (

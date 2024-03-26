@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cartcard from "../Components/Cartcard";
-import { RxCross2 } from "react-icons/rx";
+import { RxCross2, RxHalf1 } from "react-icons/rx";
 
 function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,6 +42,9 @@ function Cart(props) {
   return (
     <div className="cartcontainer">
       <div className="left">
+        {
+          props.cart.length==0?<h4>Cart is empty</h4>: <p className="tempP"></p>
+        }
         {props.cart.map((item, index) => {
           return (
             <Cartcard
