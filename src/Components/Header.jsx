@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
-import { IoMenuSharp } from "react-icons/io5";
 
-function Header() {
+function Header(props) {
   return (
     <div className="headerContainer">
       <div className="left">
@@ -23,10 +22,16 @@ function Header() {
       <div className="right">
         <IoSearch />
         <Link to="/cart">
-          <FaCartShopping />
         </Link>
         <FaUser />
-        <IoMenuSharp />
+        <Link to="/cart">
+          <div className="carticoncontainer">
+            <img src="./cart.png" alt="" />
+            <div className="pcontainer">
+              <p>{props.cart.length}</p>
+            </div>
+          </div>
+        </Link>
       </div>
     </div>
   );
