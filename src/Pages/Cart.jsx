@@ -1,7 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Cartcard from "../Components/Cartcard";
 
 function Cart(props) {
+  const [totalPrice,setTotalPrice] = useState(0);
+  function calculateTotalPrice(){
+    let tempPrice=0
+    for(let i=0;i<props.cart.length;i++){
+      tempPrice+=props.cart[i].price;
+    }
+    setTotalPrice(tempPrice)
+  }
+  useEffect(() => {
+    calculateTotalPrice()
+  }, [props.cart])
+  
   return (
     <div className="cartcontainer">
       <div className="left">
@@ -19,17 +31,17 @@ function Cart(props) {
       <div className="right">
         <div className="cost">
           <div className="promo">
-            <input type="text" name="" id="" />
+            <input type="text" name="" id="" placeholder="Enter promo code"/>
             <button>Submit</button>
           </div>
           <div className="innercost">
-            <h4>Shopping Cost:</h4> <h4>$100</h4>
+            <h4>Shopping Cost:</h4> <h4>${totalPrice}</h4>
           </div>
           <div className="innercost">
             <h4>Discount:</h4> <h4>-$0</h4>
           </div>
           <div className="innercost">
-            <h3>Total Cost:</h3> <h3>$100</h3>
+            <h3>Total Cost:</h3> <h3>${totalPrice}</h3>
           </div>
           <button className="purchase">Proceed to purchase</button>
         </div>
