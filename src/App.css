@@ -302,10 +302,9 @@ a {
   .cartcontainer .right {
     width: 100%;
   }
-  .container .topsection{
+  .container .topsection {
     padding-top: 8rem;
   }
-  
 }
 .carticoncontainer {
   position: relative;
@@ -369,14 +368,14 @@ input {
 .topsection {
   padding-top: 4rem;
 }
-.promoNcross{
+.promoNcross {
   position: relative;
   width: 75%;
 }
-.promoNcross input{
+.promoNcross input {
   width: 100%;
 }
-.promoCross{
+.promoCross {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -385,17 +384,17 @@ input {
   opacity: 0;
   pointer-events: none;
 }
-.promocodebox{
+.promocodebox {
   background-color: #626283;
   color: white;
   padding: 3px;
   border-radius: 10px;
 }
-.promoheading{
+.promoheading {
   margin-bottom: -15px;
   line-height: 22px;
 }
-.cartNotifyContainer{
+.cartNotifyContainer {
   position: absolute;
   bottom: -50px;
   right: 0;
@@ -407,26 +406,26 @@ input {
   justify-content: center;
   border-radius: 20px;
 }
-.cartNotifyContainer h4{
+.cartNotifyContainer h4 {
   font-size: 1rem;
 }
-.cartNotifyContainer{
+.cartNotifyContainer {
   opacity: 0;
   pointer-events: none;
-  transition: .3s linear all;
+  transition: 0.3s linear all;
 }
 @media only screen and (max-width: 768px) {
-  .cartcontainer .left{
+  .cartcontainer .left {
     border: none;
     border-bottom: 1px solid black;
     padding-top: 4.5rem;
   }
-  .cartcontainer .right{
+  .cartcontainer .right {
     padding: 3rem 0;
     /* border: 1px solid; */
     margin-bottom: 0;
   }
-  .cartcardcontainer{
+  .cartcardcontainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -436,36 +435,39 @@ input {
     gap: 1rem;
     padding: 1rem;
   }
-  .cross{
+  .cross {
     position: absolute;
     right: 30px;
     bottom: 4.5rem;
   }
-  .carttitle{
-    font-size: .8rem;
+  .carttitle {
+    font-size: 0.8rem;
   }
-  .quantityDisplay{
-    margin-right: .6rem;
+  .quantityDisplay {
+    margin-right: 0.6rem;
   }
   .cartcontainer .left {
     height: 100%;
   }
-  .footercontainer{
+  .footercontainer {
     margin-top: 0;
   }
-  .cartcontainer .left{
+  .cartcontainer .left {
     flex-direction: row;
   }
-  .cartcontainer .left{
+  .cartcontainer .left {
     overflow-y: auto;
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
   }
-  .cartcontainer .cartcardcontainer{
+  .cartcontainer .cartcardcontainer {
     min-width: 500px;
   }
+  .cartcardcontainer{
+    height: 100%;
+  }
 }
-.tempP{
+.tempP {
   position: absolute;
 }
