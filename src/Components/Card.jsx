@@ -67,7 +67,7 @@ function Card(props) {
         </div>
       </div>
       <div className="price">
-        <h5>${props.price}</h5>
+        <h5>&#8377;{props.price*30}</h5>
       </div>
       <div className="cartbtn">
         <button onClick={addToCart}>

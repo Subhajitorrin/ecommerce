@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Cartcard from "../Components/Cartcard";
 import { RxCross2, RxHalf1 } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 function Cart(props) {
+  const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0);
   const [discout, setDiscount] = useState(0);
   const discountAmount = 100;
@@ -11,7 +13,7 @@ function Cart(props) {
     for (let i = 0; i < props.cart.length; i++) {
       tempPrice += props.cart[i].price * props.cart[i].quantity;
     }
-    tempPrice=tempPrice.toFixed(2);
+    tempPrice = tempPrice.toFixed(2);
     setTotalPrice(tempPrice);
   }
   function usePromocode() {
@@ -39,12 +41,58 @@ function Cart(props) {
   useEffect(() => {
     calculateTotalPrice();
   }, [props.cart]);
+
+  // razorpay integration
+  useEffect(() => {
+    // Load Razorpay SDK script dynamically
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up the script tag
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handlePayment = async () => {
+    const options = {
+      key: "rzp_test_7cs83Ikm791P0j",
+      amount: (totalPrice*30) * 100, // Amount in paise
+      currency: "INR",
+      name: "ORRINMART",
+      description: "Test Transaction",
+      image: "",
+      handler: (response) => {
+        console.log(response);
+        props.setCart([])
+        navigate("/");
+      },
+      prefill: {
+        name: "Subhajit Ghosh",
+        email: "clashwithsubhajit6@gmail.com",
+        contact: "9800952875",
+      },
+      notes: {
+        address: "Junbedia, Bankura",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
   return (
     <div className="cartcontainer">
       <div className="left">
-        {
-          props.cart.length==0?<h4>Cart is empty</h4>: <p className="tempP"></p>
-        }
+        {props.cart.length == 0 ? (
+          <h4>Cart is empty</h4>
+        ) : (
+          <p className="tempP"></p>
+        )}
         {props.cart.map((item, index) => {
           return (
             <Cartcard
@@ -61,7 +109,10 @@ function Cart(props) {
       </div>
       <div className="right">
         <div className="cost">
-          <h6 className="promoheading">Use <span className="promocodebox">ORRIN100</span> promocode on first payment</h6>
+          <h6 className="promoheading">
+            Use <span className="promocodebox">ORRIN100</span> promocode on
+            first payment
+          </h6>
           <div className="promo">
             <div className="promoNcross">
               <input
@@ -76,15 +127,15 @@ function Cart(props) {
             <button onClick={usePromocode}>Submit</button>
           </div>
           <div className="innercost">
-            <h4>Shopping Cost:</h4> <h4>${totalPrice}</h4>
+            <h4>Shopping Cost:</h4> <h4>&#8377;{totalPrice*30}</h4>
           </div>
           <div className="innercost">
-            <h4>Discount:</h4> <h4>-${discout}</h4>
+            <h4>Discount:</h4> <h4>-&#8377;{discout}</h4>
           </div>
           <div className="innercost">
-            <h3>Total Cost:</h3> <h3>${totalPrice}</h3>
+            <h3>Total Cost:</h3> <h3>&#8377;{totalPrice*30}</h3>
           </div>
-          <button className="purchase">Proceed to purchase</button>
+          <button className="purchase" onClick={handlePayment}>Proceed to purchase</button>
         </div>
       </div>
     </div>
