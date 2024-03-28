@@ -59,7 +59,7 @@ function Cart(props) {
   const handlePayment = async () => {
     const options = {
       key: "rzp_test_7cs83Ikm791P0j",
-      amount: totalPrice* 100, // Amount in paise
+      amount: parseInt(totalPrice* 100), // Amount in paise
       currency: "INR",
       name: "ORRINMART",
       description: "Test Transaction",
