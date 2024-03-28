@@ -2,6 +2,7 @@ import React from "react";
 import TopSection from "../Components/TopSection";
 import { useState, useEffect } from "react";
 import Card from "../Components/Card";
+import PaymentSeccesful from "../Components/PaymentSeccesful";
 
 function Home(props) {
   const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ function Home(props) {
     <>
       <TopSection />
       <div className="homeContainer">
+        <PaymentSeccesful isVisible={props.isVisible}/>
         {products.map((item, index) => {
           return (
             <Card key={index}

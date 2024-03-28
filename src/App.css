@@ -486,3 +486,14 @@ input {
   justify-content: space-between;
   align-items: center;
 }
+.paymentsuccess{
+  background-color: #626283;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 8rem;
+  position: fixed;
+  pointer-events: none;
+  transition: .3s linear all;
+  opacity: 0;
+}

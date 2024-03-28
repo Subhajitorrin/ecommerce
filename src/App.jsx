@@ -8,13 +8,14 @@ import { useState } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <div className="container">
       <BrowserRouter>
         <Header cart={cart}/>
         <Routes>
-          <Route path="/" element={<Home cart={cart} setCart={setCart}/>} />
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
+          <Route path="/" element={<Home cart={cart} setCart={setCart} isVisible={isVisible}/>} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} setIsVisible={setIsVisible}/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

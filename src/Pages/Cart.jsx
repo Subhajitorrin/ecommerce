@@ -59,15 +59,21 @@ function Cart(props) {
   const handlePayment = async () => {
     const options = {
       key: "rzp_test_7cs83Ikm791P0j",
-      amount: parseInt(totalPrice* 100), // Amount in paise
+      amount: parseInt(totalPrice * 100), // Amount in paise
       currency: "INR",
       name: "ORRINMART",
       description: "Test Transaction",
       image: "",
       handler: (response) => {
         console.log(response);
-        props.setCart([])
+        props.setCart([]);
         navigate("/");
+
+        props.setIsVisible(true);
+        setTimeout(() => {
+          props.setIsVisible(false);
+        }, 3000);
+        
       },
       prefill: {
         name: "Subhajit Ghosh",
@@ -135,7 +141,9 @@ function Cart(props) {
           <div className="innercost">
             <h3>Total Cost:</h3> <h3>&#8377;{totalPrice}</h3>
           </div>
-          <button className="purchase" onClick={handlePayment}>Proceed to purchase</button>
+          <button className="purchase" onClick={handlePayment}>
+            Proceed to purchase
+          </button>
         </div>
       </div>
     </div>
