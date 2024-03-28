@@ -59,7 +59,7 @@ function Cart(props) {
   const handlePayment = async () => {
     const options = {
       key: "rzp_test_7cs83Ikm791P0j",
-      amount: (totalPrice*30) * 100, // Amount in paise
+      amount: totalPrice* 100, // Amount in paise
       currency: "INR",
       name: "ORRINMART",
       description: "Test Transaction",
@@ -127,13 +127,13 @@ function Cart(props) {
             <button onClick={usePromocode}>Submit</button>
           </div>
           <div className="innercost">
-            <h4>Shopping Cost:</h4> <h4>&#8377;{totalPrice*30}</h4>
+            <h4>Shopping Cost:</h4> <h4>&#8377;{totalPrice}</h4>
           </div>
           <div className="innercost">
             <h4>Discount:</h4> <h4>-&#8377;{discout}</h4>
           </div>
           <div className="innercost">
-            <h3>Total Cost:</h3> <h3>&#8377;{totalPrice*30}</h3>
+            <h3>Total Cost:</h3> <h3>&#8377;{totalPrice}</h3>
           </div>
           <button className="purchase" onClick={handlePayment}>Proceed to purchase</button>
         </div>

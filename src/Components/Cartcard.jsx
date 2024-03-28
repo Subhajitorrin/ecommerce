@@ -44,7 +44,7 @@ function Cartcard(props) {
           <h4 className="quantityDisplay">{props.quantity}</h4>
           <button onClick={decreaseQuantity}>-</button>
         </div>
-        <h4 className="price">&#8377;{props.price*30}</h4>
+        <h4 className="price">&#8377;{props.price}</h4>
         <RxCross2 className="cross" onClick={removeCartCard} />
       </div>
     </div>

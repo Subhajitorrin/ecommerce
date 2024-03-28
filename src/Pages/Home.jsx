@@ -7,7 +7,8 @@ function Home(props) {
   const [products, setProducts] = useState([]);
   
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    // https://fakestoreapi.com/products
+    fetch("./data.json")
       .then((res) => res.json())
       .then((json) => setProducts(json))
       .catch((error) => console.error("Error fetching data:", error));
